@@ -1,8 +1,9 @@
 const canvas = document.getElementById("pmac");
 const graph = canvas.getContext ("2d");
+const gameColor = {board : "black",} 
 
 function drawBoard(){
-    graph.fillStyle = "black";
+    graph.fillStyle = gameColor.board;
     graph.fillRect (0, 0, canvas.width, canvas.height);
 }
 
