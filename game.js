@@ -34,11 +34,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             let newPlatBottom = 100 + i * platfomrSpace;
             let newPlatform = new Platform(newPlatBottom);
 
-
         }
-
-
-
     }
 
     function start (){
