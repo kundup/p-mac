@@ -7,8 +7,13 @@ body {
   
   .canvas-wrapper {
     display: inline-block;
-    border: 3px solid black;
+    border: 5px solid black;
+    border-radius: 20px;
     margin: 50px;
     padding: 0px;    
   }
-  
+
+
+  #canvas {
+    display : block;
+  }

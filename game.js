@@ -9,14 +9,21 @@ class Game{
         this.width = canvas.width = 500;
         this.height = canvas.height = 500;
     }
-       
-    
+    draw(ctx){
+        ctx.fillRect(this.x+5, this.y+5, this.width/16, this.height/16);
+    }
+    update(){
+        this.x ++;
+    }
+
 }
 
 const game = new Game();
 
 function animate(){
-    context.getClear(0,0,game.width,game.height);
+    context.clearRect(0,0,game.width,game.height);
+    game.draw(context);
+    game.update();
     requestAnimationFrame(animate);
 }
 
