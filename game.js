@@ -1,8 +1,23 @@
+
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
-const width = canvas.width = 500;
-const height = canvas.height = 500;
+class Game{
+    constructor(){
+        this.x = 0;
+        this.y = 0;
+        this.width = canvas.width = 500;
+        this.height = canvas.height = 500;
+    }
+       
+    
+}
 
-context.fillStyle = "red";
-context.fillRect(0, 0, width, height);
+const game = new Game();
+
+function animate(){
+    context.getClear(0,0,game.width,game.height);
+    requestAnimationFrame(animate);
+}
+
+animate();
