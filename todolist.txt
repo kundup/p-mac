@@ -1,2 +1,2 @@
-completely follow oop style
-starting with game class
+- this game contains completely oop standarts
+- starting with game class
