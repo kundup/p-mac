@@ -1,13 +1,2 @@
-creating game scheme - done
-finding or creating player, enemy
-creating game map ; players, blanks, riddles;
-moving the player, enemy;
-controlling the player
-intelligent enemies
-collision detection
-game logic
-game over
-levels;
-musics
-title screen
-try to convert your code OOP
+completely follow oop style
+starting with game class
