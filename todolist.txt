@@ -1,2 +1,17 @@
 - this game contains completely oop standarts
 - starting with game class
+- now player is moving left with an animation, need to optimize the code for the other directions.
+    . maybe needs to open playerstate file
+- enemy class need to customize and see it on the screen.
+- map need to be created
+- dots need to place in to the map area.
+- collision detection
+- score optimization
+- health optimization
+    . restart the game losing an health automatically
+- ui design 
+    .scoreboard
+    .health board
+- background
+- some visual effects
+    . dust effects
