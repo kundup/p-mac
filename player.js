@@ -1,3 +1,5 @@
+import { Input } from "./input.js";
+
 export class Player {
     constructor(game){
         this.game = game;
@@ -12,14 +14,15 @@ export class Player {
         this.fps = 5;
         this.frameInterval = 1000/ this.fps;
         this.frameTimer = 0;
-
+        this.input = new Input(this);
+        this.input.handleInput();
+    
         
     }
     draw(contex){
         contex.drawImage(this.image, 15.2 * this.frameX, this.frameY, this.width * 0.5, this.height * 0.5, this.x, this.y, this.width * 1.5, this.height * 1.5);
     }
-    update(deltatime){        
-        this.x += 1;
+    update(deltatime){  
         if (this.x >= this.game.width) this.x = 0;
         if (this.frameTimer > this.frameInterval){
             this.frameTimer = 0;
