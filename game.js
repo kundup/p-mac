@@ -1,30 +1,39 @@
+import { Player } from "./player.js";
 
-canvas = document.getElementById("canvas");
-context = canvas.getContext("2d");
+window.addEventListener("load", function(){
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
 
-class Game{
-    constructor(){
-        this.x = 0;
-        this.y = 0;
-        this.width = canvas.width = 500;
-        this.height = canvas.height = 500;
+    class Game{
+        constructor(){
+            this.x = 0;
+            this.y = 0;
+            this.width = canvas.width = 500;
+            this.height = canvas.height = 500;
+            this.player = new Player()
+            
+        }
+        draw(ctx){
+            this.player.draw(ctx);
+
+        }
+        update(deltatime){            
+            this.player.update(deltatime);
+        }
+
     }
-    draw(ctx){
-        ctx.fillRect(this.x+5, this.y+5, this.width/16, this.height/16);
+
+    const game = new Game();
+
+    let lastTime = 0;
+    function animate(timeStamp){
+        context.clearRect(0,0,game.width,game.height);
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
+        game.draw(context);
+        game.update(deltaTime);
+        requestAnimationFrame(animate);
     }
-    update(){
-        this.x ++;
-    }
 
-}
-
-const game = new Game();
-
-function animate(){
-    context.clearRect(0,0,game.width,game.height);
-    game.draw(context);
-    game.update();
-    requestAnimationFrame(animate);
-}
-
-animate();
+    animate(0);
+})
