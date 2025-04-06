@@ -1,12 +1,13 @@
 export class Player {
-    constructor(){
+    constructor(game){
+        this.game = game;
         this.x = 0;
         this.y = 0;
         this.width = 30;
         this.height = 30;
         this.image = document.getElementById("player");
         this.frameX = 6;
-        this.frameY =12;
+        this.frameY = 12;
         this.frameMax = 7;
         this.frameInterval = 1000/5;
         this.frameTimer = 0;
@@ -14,11 +15,11 @@ export class Player {
         
     }
     draw(contex){
-        contex.drawImage(this.image, 15.2* this.frameX,this.frameY,15, 15, this.x, this.y, 45, 45);
+        contex.drawImage(this.image, 15.2 * this.frameX, this.frameY, this.width * 0.5, this.height * 0.5, this.x, this.y, this.width * 1.5, this.height * 1.5);
     }
-    update(deltatime){
-        
+    update(deltatime){        
         this.x += 1;
+        if (this.x >= this.game.width) this.x = 0;
         if (this.frameTimer > this.frameInterval){
             this.frameTimer = 0;
             if (this.frameX < this.frameMax)this.frameX ++;
