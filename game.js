@@ -10,17 +10,14 @@ window.addEventListener("load", function(){
             this.y = 0;
             this.width = canvas.width = 500;
             this.height = canvas.height = 500;
-            this.player = new Player(this)
-            
+            this.player = new Player(this);            
         }
         draw(ctx){
             this.player.draw(ctx);
-
         }
         update(deltatime){            
             this.player.update(deltatime);
         }
-
     }
 
     const game = new Game();
