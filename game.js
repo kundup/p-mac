@@ -1,4 +1,5 @@
 import { Player } from "./player.js";
+import { Input } from "./input.js"
 
 window.addEventListener("load", function(){
     const canvas = document.getElementById("canvas");
@@ -10,13 +11,14 @@ window.addEventListener("load", function(){
             this.y = 0;
             this.width = canvas.width = 500;
             this.height = canvas.height = 500;
-            this.player = new Player(this);            
+            this.player = new Player(this); 
+            this.input = new Input()           
         }
         draw(ctx){
             this.player.draw(ctx);
         }
         update(deltatime){            
-            this.player.update(deltatime);
+            this.player.update(deltatime, this.input.keys);
         }
     }
 

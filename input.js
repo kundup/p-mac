@@ -1,4 +1,4 @@
-class Input {
+export class Input {
     constructor(){
         this.keys = []; 
         this.state = {
@@ -20,24 +20,6 @@ class Input {
             }
         })
     }
-}
-
-export class HandleInput {
-    constructor (player){
-        this.player= player;
-        this.input = new Input();
-        this.input.handleInput();
-
-    }
-    enterInput (){
-        if (this.input.keys.includes("ArrowDown")){
-            this.player.frameX = 7;
-            this.player.frameMax = 8;
-            this.player.y++;        
-        }
-
-    }
-
 }
 
 
