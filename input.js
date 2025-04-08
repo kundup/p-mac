@@ -1,10 +1,7 @@
 export class Input {
     constructor(){
         this.keys = []; 
-        this.state = {
-            IDLE : 0,
-            WALK_IN : 1,
-        }     
+            
     }
     handleInput(){
         document.addEventListener("keydown", (e) => {

@@ -3,36 +3,43 @@ const STATE = {
     DOWNWALKING : 1,
 }
 
-export class Idle {
+class Status {
+    constructor(state){        
+        this.state = state;
+    }
+}
+
+export class Idle extends Status {
     constructor(player){
+        super("IDLE");       
         this.player = player;
-        this.state = STATE["IDLE"];        
+          
     }
     enter (){
         this.player.frameX = 6
         this.player.frameMax = 7;
     }
     handleInput(input){
-        this.enter();
         if (input.includes("ArrowDown")){
-            setState(STATE.DOWNWALKING);
+            this.player.setState(STATE.DOWNWALKING);
         }
 
     }
 }
 
-export class DownWalking {
+export class DownWalking extends Status {
     constructor(player){
+        super("DOWNWALKING");
         this.player = player;
-        this.state = STATE["DOWNWALKING"];        
+       
     }
     enter (){
         this.player.frameX = 8
         this.player.frameMax = 9;
     }
-    handleInput(){
+    handleInput(input){
         if (input.includes("ArrowRight")){
-            setState(STATE.IDLE);
+            this.player.setState(STATE.IDLE);
         }
     }
 }

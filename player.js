@@ -26,12 +26,13 @@ export class Player {
         contex.drawImage(this.image, 15.2 * this.frameX, 12, this.width * 0.5, this.height * 0.5, this.x, this.y, 45, 45);
     }
     update(deltatime, input){ 
-        this.currentState.handleInput(input);        
+        this.currentState.handleInput(input);
+        this.x++;        
         if (this.x >= this.game.width) this.x = 0;
         if (this.frameTimer > this.frameInterval){
             this.frameTimer = 0;
             if (this.frameX < this.frameMax)this.frameX ++;
-            else this.frameX = 6;
+            else this.frameX = this.frameMax-1;
         } else {
             this.frameTimer += deltatime;
         }
