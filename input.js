@@ -1,7 +1,6 @@
 export class Input {
     constructor(){
-        this.keys = []; 
-            
+        this.keys = [];            
     }
     handleInput(){
         document.addEventListener("keydown", (e) => {

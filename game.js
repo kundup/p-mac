@@ -12,13 +12,16 @@ window.addEventListener("load", function(){
             this.width = canvas.width = 500;
             this.height = canvas.height = 500;
             this.player = new Player(this); 
-            this.input = new Input()           
+            this.input = new Input();
+            this.input.handleInput();
+                       
         }
         draw(ctx){
             this.player.draw(ctx);
         }
         update(deltatime){            
             this.player.update(deltatime, this.input.keys);
+            
         }
     }
 
