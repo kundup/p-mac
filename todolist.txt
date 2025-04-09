@@ -1,7 +1,7 @@
 - this game contains completely oop standarts
 - starting with game class
 - now player is moving left with an animation, need to optimize the code for the other directions.
-    . maybe needs to open playerstate file
+    . maybe needs to open playerstate file -//(OPENED AND HALF OF THE ACTION COMPLETED)
 - enemy class need to customize and see it on the screen.
 - map need to be created
 - dots need to place in to the map area.
@@ -13,5 +13,6 @@
     .scoreboard
     .health board
 - background
-- some visual effects
+- some visual and sound effects
     . dust effects
+    . sound effects
