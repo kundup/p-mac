@@ -27,7 +27,7 @@ export class Idle extends Status {
     }
 }
 
-export class DownWalking extends Status {
+export class DownWalking extends Statu {
     constructor(player){
         super("DOWNWALKING");
         this.player = player;
