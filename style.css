@@ -21,6 +21,6 @@ body {
     box-sizing: border-box; 
   }
 
-  #player{
+  #player, #enemy{
     display : none
   }

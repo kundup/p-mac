@@ -1,5 +1,6 @@
 import { Player } from "./player.js";
 import { Input } from "./input.js"
+import { Enemies } from "./enemy.js";
 
 window.addEventListener("load", function(){
     const canvas = document.getElementById("canvas");
@@ -14,14 +15,27 @@ window.addEventListener("load", function(){
             this.player = new Player(this); 
             this.input = new Input();
             this.input.handleInput();
+            this.enemyList = [];
+            this.addEnemy();
                        
         }
-        draw(ctx){
+        draw(ctx) {
             this.player.draw(ctx);
+            this.enemyList.forEach((object) => {
+                object.drawEnemies(ctx);
+            });
         }
+        
         update(deltatime){            
             this.player.update(deltatime, this.input.keys);
+            this.enemyList.forEach((object) =>{
+                object.updateEnemies();
+            })
             
+        }
+
+        addEnemy(){
+            this.enemyList.push(new Enemies())
         }
     }
 
