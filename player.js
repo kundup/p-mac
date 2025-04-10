@@ -1,4 +1,4 @@
-import { Idle, DownWalking } from "./gamestate.js";
+import { Idle, DownWalking, UpWalking, LeftWalking } from "./gamestate.js";
 
 export class Player {
     constructor(game){
@@ -20,7 +20,7 @@ export class Player {
                  
     }
     init (){
-        this.inputState = [new Idle(this), new DownWalking(this)];
+        this.inputState = [new Idle(this), new DownWalking(this), new UpWalking(this), new LeftWalking(this)];
         this.currentState = this.inputState[0]
         this.currentState.enter();
     }
