@@ -1,8 +1,8 @@
 - this game contains completely oop standarts
 - starting with game class
 - now player is moving left with an animation, need to optimize the code for the other directions.
-    . maybe needs to open playerstate file -//(OPENED AND HALF OF THE ACTION COMPLETED)
-- enemy class need to customize and see it on the screen.
+    . maybe needs to open playerstate file -//completed
+- enemy class need to customize and see it on the screen.// enemy class created and made a basic sample with rectangle.now try with real example.
 - map need to be created
 - dots need to place in to the map area.
 - collision detection
