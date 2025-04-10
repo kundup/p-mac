@@ -16,8 +16,7 @@ export class Player {
         this.fps = 5;
         this.frameInterval = 1000/ this.fps;
         this.frameTimer = 0;        
-        this.init(); 
-                 
+        this.init();                  
     }
     init (){
         this.inputState = [new Idle(this), new DownWalking(this), new UpWalking(this), new LeftWalking(this)];
@@ -30,18 +29,15 @@ export class Player {
     }
     update(deltatime, input){ 
         this.currentState.handleInput(input);
-        // horizontal movement
-        this.x += this.speedX;
-        //if (input.includes("ArrowRight")) this.speedX = this.speedMax;
-        //else this.speedX = 0;
-        // else if (input.includes("ArrowLeft")) this.speedX = -this.speedMax;
-        // vertical movement
-        this.y += this.speedY
-        //if (input.includes("ArrowDown")) this.speedY = this.speedMax;
-        //else this.speedY = 0;
-
+        // horizontal movement and vertical movement
+        this.x += this.speedX;        
+        this.y += this.speedY 
         // boundary condition       
         if (this.x >= this.game.width) this.x = 0;
+        else if (this.x + this.width < 0) this.x = this.game.width;
+        // vertical boundary check
+        if (this.y >= this.game.height) this.y = 0;
+        else if (this.y + this.height <= 0) this.y = this.game.height;    
         // fps settings
         if (this.frameTimer > this.frameInterval){
             this.frameTimer = 0;
@@ -49,13 +45,10 @@ export class Player {
             else this.frameX = this.frameMax-1;
         } else {
             this.frameTimer += deltatime;
-        }
-        
+        }        
     }
-
     setState(state){
         this.currentState = this.inputState[state];
-        this.currentState.enter();        
-
+        this.currentState.enter(); 
     }
 }
