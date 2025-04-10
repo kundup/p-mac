@@ -4,18 +4,15 @@ const STATE = {
     UPWALKING : 2,
     LEFTWALKING : 3,
 }
-
 class Status {
-    constructor(state){        
+    constructor(state, player){        
         this.state = state;
+        this.player = player
     }
 }
-
 export class Idle extends Status {
     constructor(player){
-        super(STATE.IDLE);       
-        this.player = player;
-          
+        super(STATE.IDLE, player);                
     }
     enter (){
         this.player.frameX = 6
@@ -32,12 +29,9 @@ export class Idle extends Status {
         else if (input.includes("ArrowLeft")) this.player.setState(STATE.LEFTWALKING);      
     }
 }
-
 export class DownWalking extends Status {
     constructor(player){
-        super(STATE.DOWNWALKING);
-        this.player = player;
-       
+        super(STATE.DOWNWALKING, player);       
     }
     enter (){
         this.player.frameX = 8
@@ -52,12 +46,9 @@ export class DownWalking extends Status {
         else if (input.includes("ArrowLeft")) this.player.setState(STATE.LEFTWALKING);     
     }
 }
-
 export class UpWalking extends Status {
     constructor(player){
-        super(STATE.UPWALKING);
-        this.player = player;
-       
+        super(STATE.UPWALKING, player);       
     }
     enter (){
         this.player.frameX = 4;
@@ -72,11 +63,9 @@ export class UpWalking extends Status {
         else if (input.includes("ArrowLeft")) this.player.setState(STATE.LEFTWALKING);
     }
 }
-
 export class LeftWalking extends Status {
     constructor(player){
-        super(STATE.LEFTWALKING);
-        this.player = player;       
+        super(STATE.LEFTWALKING, player);         
     }
     enter (){
         this.player.frameX = 1;
