@@ -5,7 +5,7 @@
 - enemy class need to customize and see it on the screen.// enemy class created and made a basic sample with rectangle.now try with real example. 
 // 4 pcs enemy created and they are moving on x direction.
 - map need to be created- // map class created and practiced in the game. okay
-- dots need to place in to the map area.
+- dots need to place in to the map area. // okay
 - enemie need to follow the player
 - collision detection
 - score optimization

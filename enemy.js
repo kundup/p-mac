@@ -1,8 +1,8 @@
 export class Enemies {
     constructor(game){
         this.game = game
-        this.x = Math.random() * 500;
-        this.y = Math.random() * 500;
+        this.x = Math.random() * 200 + this.game.player.x
+        this.y = Math.random() * 200 + this.game.player.y
         this.width = 30;
         this.height = 30;
         this.image = document.getElementById("enemy");
@@ -14,7 +14,10 @@ export class Enemies {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
     updateEnemies(){
-        this.x += this.speed;
+        if (this.game.player.x){
+            this.x += 
+        }
+        
         if (this.x > this.game.width) this.x = -this.width;
     }
 }

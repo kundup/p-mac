@@ -3,8 +3,8 @@ import { Idle, DownWalking, UpWalking, LeftWalking } from "./gamestate.js";
 export class Player {
     constructor(game){
         this.game = game;
-        this.x = 0;
-        this.y = 0;
+        this.x = 100;
+        this.y = 100;
         this.width = 30;
         this.height = 30;        
         this.image = document.getElementById("player");        

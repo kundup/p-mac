@@ -26,7 +26,7 @@ window.addEventListener("load", function(){
                        
         }
         draw(ctx) {
-            this.gameMap.drawMap(ctx);
+            //this.gameMap.drawMap(ctx);
             this.player.draw(ctx);
             this.enemyList.forEach((object) => {
                 object.drawEnemies(ctx);                
