@@ -25,7 +25,7 @@ export class Player {
     }
 
     draw(contex){
-        contex.drawImage(this.image, 15.2 * this.frameX, 12, this.width * 0.5, this.height * 0.5, this.x, this.y, 45, 45);
+        contex.drawImage(this.image, 15.2 * this.frameX, 12, this.width * 0.5, this.height * 0.5, this.x, this.y, this.width, this.height);
     }
     update(deltatime, input){ 
         this.currentState.handleInput(input);

@@ -10,8 +10,8 @@ window.addEventListener("load", function(){
         constructor(){
             this.x = 0;
             this.y = 0;
-            this.width = canvas.width = 500;
-            this.height = canvas.height = 500;
+            this.width = canvas.width = 600;
+            this.height = canvas.height = 600;
             this.player = new Player(this); 
             this.input = new Input();
             this.input.handleInput();
