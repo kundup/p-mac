@@ -35,7 +35,7 @@ window.addEventListener("load", function(){
         }
 
         addEnemy(){
-            this.enemyList.push(new Enemies())
+            for (let i = 0; i < 4; i++) this.enemyList.push(new Enemies(this));            
         }
     }
 
