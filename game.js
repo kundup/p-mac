@@ -1,4 +1,4 @@
-import { map } from "./map.js";
+import { GameMap, map } from "./map.js";
 import { Player } from "./player.js";
 import { Input } from "./input.js"
 import { Enemies } from "./enemy.js";
@@ -15,18 +15,21 @@ window.addEventListener("load", function(){
             this.height = canvas.height = 600;
             this.tile_size = 30;
             this.row = this.height / this.tile_size;
-            this.col = this.width / this.tile_size;  
+            this.col = this.width / this.tile_size; 
+
             this.player = new Player(this); 
             this.input = new Input();
+            this.gameMap = new GameMap(map, this);
             this.input.handleInput();
             this.enemyList = [];
             this.addEnemy();
                        
         }
         draw(ctx) {
+            this.gameMap.drawMap(ctx);
             this.player.draw(ctx);
             this.enemyList.forEach((object) => {
-                object.drawEnemies(ctx);
+                object.drawEnemies(ctx);                
             });
         }
         

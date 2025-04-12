@@ -15,7 +15,6 @@ export class Enemies {
     }
     updateEnemies(){
         this.x += this.speed;
-        console.log(this.x)
         if (this.x > this.game.width) this.x = -this.width;
     }
 }
