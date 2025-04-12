@@ -8,11 +8,11 @@ export class Player {
         this.width = 30;
         this.height = 30;        
         this.image = document.getElementById("player");        
-        this.frameX;
-        this.frameMax = 7;
+        this.frameX =4;
+        this.frameMax = 5;
         this.speedX = 0;
         this.speedY = 0;
-        this.speedMax = 2;
+        this.speedMax = 3;
         this.fps = 5;
         this.frameInterval = 1000/ this.fps;
         this.frameTimer = 0;        
@@ -25,7 +25,7 @@ export class Player {
     }
 
     draw(contex){
-        contex.drawImage(this.image, 15.2 * this.frameX, 12, this.width * 0.5, this.height * 0.5, this.x, this.y, this.width, this.height);
+        contex.drawImage(this.image, this.width * this.frameX, 0, this.width, this.height, this.x, this.y, this.width, this.height);
     }
     update(deltatime, input){ 
         this.currentState.handleInput(input);
