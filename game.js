@@ -1,10 +1,11 @@
+import { map } from "./map.js";
 import { Player } from "./player.js";
 import { Input } from "./input.js"
 import { Enemies } from "./enemy.js";
 
 window.addEventListener("load", function(){
     const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d");    
 
     class Game{
         constructor(){
@@ -12,6 +13,9 @@ window.addEventListener("load", function(){
             this.y = 0;
             this.width = canvas.width = 600;
             this.height = canvas.height = 600;
+            this.tile_size = 30;
+            this.row = this.height / this.tile_size;
+            this.col = this.width / this.tile_size;  
             this.player = new Player(this); 
             this.input = new Input();
             this.input.handleInput();
