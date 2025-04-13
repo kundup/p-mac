@@ -8,16 +8,25 @@ export class Enemies {
         this.image = document.getElementById("enemy");
         this.frameX = 0;
         this.frameY = 0;
-        this.speed = Math.random()* 2;
+        this.speed = Math.random() * 2 + 2;
+        this.enemies = [ {
+            x : this.x,
+            y : this.y
+        },]
     }
     drawEnemies(ctx){
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
-    updateEnemies(){
-        if (this.game.player.x){
-            this.x += 
-        }
-        
+    updateEnemies(playerx, playery){
+        let offset = 20;
+
+        // horizontal movement
+        if (playerx > this.x && !this.game.player.speedX == 0 ) this.x += this.speed;
+        else if (playerx < this.x && !this.game.player.speedX == 0) this.x -= this.speed;
+
+        if (playery < this.y && !this.game.player.speedY == 0) this.y -= this.speed;
+        else if (playery > this.y && !this.game.player.speedY == 0) this.y += this.speed;
+                
         if (this.x > this.game.width) this.x = -this.width;
     }
 }
