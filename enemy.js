@@ -8,25 +8,30 @@ export class Enemies {
         this.image = document.getElementById("enemy");
         this.frameX = 0;
         this.frameY = 0;
-        this.speed = Math.random() * 2 + 2;
-        this.enemies = [ {
+        this.speed = Math.random() * 2;
+        this.enemies = {
             x : this.x,
             y : this.y
-        },]
+        }
     }
     drawEnemies(ctx){
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, this.enemies.x, this.enemies.y, this.width, this.height);
     }
-    updateEnemies(playerx, playery){
-        let offset = 20;
+    updateEnemies(player){
+        // enemies follows the player
+        const dx = player.x - this.enemies.x;
+        const dy = player.y - this.enemies.y;
 
-        // horizontal movement
-        if (playerx > this.x && !this.game.player.speedX == 0 ) this.x += this.speed;
-        else if (playerx < this.x && !this.game.player.speedX == 0) this.x -= this.speed;
-
-        if (playery < this.y && !this.game.player.speedY == 0) this.y -= this.speed;
-        else if (playery > this.y && !this.game.player.speedY == 0) this.y += this.speed;
-                
+        if (Math.abs(dx) > Math.abs(dy)){
+            if (player.x < this.enemies.x){
+                this.enemies.x -= this.speed;
+            } else if (player.x > this.enemies.x){
+                this.enemies.x += this.speed;
+            }        }
+        else {
+            if (player.y < this.enemies.y) this.enemies.y -= this.speed;
+            else if (player.y > this.enemies.y) this.enemies.y += this.speed; 
+        }            
         if (this.x > this.game.width) this.x = -this.width;
     }
 }

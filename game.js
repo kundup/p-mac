@@ -36,13 +36,13 @@ window.addEventListener("load", function(){
         update(deltatime){            
             this.player.update(deltatime, this.input.keys);
             this.enemyList.forEach((object) =>{
-                object.updateEnemies(this.player.x, this.player.y);
+                object.updateEnemies(this.player);
             })
             
         }
 
         addEnemy(){
-            for (let i = 0; i < 4; i++) this.enemyList.push(new Enemies(this));            
+            for (let i = 0; i < 2; i++) this.enemyList.push(new Enemies(this));            
         }
     }
 
