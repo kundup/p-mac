@@ -26,26 +26,22 @@ window.addEventListener("load", function(){
                        
         }
         draw(ctx) {
-            //this.gameMap.drawMap(ctx);
+            this.gameMap.drawMap(ctx);
             this.player.draw(ctx);
             this.enemyList.forEach((object) => {
                 object.drawEnemies(ctx);                
             });
-        }
-        
+        }        
         update(deltatime){            
             this.player.update(deltatime, this.input.keys);
             this.enemyList.forEach((object) =>{
-                object.updateEnemies(this.player);
-            })
-            
+                object.updateEnemies(this.player,this.enemyList);
+            })            
         }
-
         addEnemy(){
-            for (let i = 0; i < 2; i++) this.enemyList.push(new Enemies(this));            
+            for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
         }
     }
-
     const game = new Game();
 
     let lastTime = 0;

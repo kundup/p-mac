@@ -1,39 +1,44 @@
 export class Enemies {
     constructor(game){
-        this.game = game
-        this.x = Math.random() * 200 + this.game.player.x
-        this.y = Math.random() * 200 + this.game.player.y
+        this.game = game;
+        this.x = Math.random() * 200 + this.game.player.x;
+        this.y = Math.random() * 200 + this.game.player.y;
         this.width = 30;
         this.height = 30;
         this.image = document.getElementById("enemy");
         this.frameX = 0;
         this.frameY = 0;
         this.speed = Math.random() * 2;
-        this.enemies = {
-            x : this.x,
-            y : this.y
-        }
     }
+
     drawEnemies(ctx){
-        ctx.drawImage(this.image, this.enemies.x, this.enemies.y, this.width, this.height);
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
-    updateEnemies(player){
-        // enemies follows the player
-        const dx = player.x - this.enemies.x;
-        const dy = player.y - this.enemies.y;
+
+    updateEnemies(player, allEnemies){
+        const dx = player.x - this.x;
+        const dy = player.y - this.y;
 
         if (Math.abs(dx) > Math.abs(dy)){
-            if (player.x < this.enemies.x){
-                this.enemies.x -= this.speed;
-            } else if (player.x > this.enemies.x){
-                this.enemies.x += this.speed;
-            }        }
-        else {
-            if (player.y < this.enemies.y) this.enemies.y -= this.speed;
-            else if (player.y > this.enemies.y) this.enemies.y += this.speed; 
-        }  
-        
-        // boundary condition for enemies
+            this.x += Math.sign(dx) * this.speed;
+        } else {
+            this.y += Math.sign(dy) * this.speed;
+        }
+
+        for (let others of allEnemies) {
+            if (others === this) continue;
+
+            const ox = this.x - others.x;
+            const oy = this.y - others.y;
+            const dist = Math.sqrt(ox * ox + oy * oy);
+            const minDist = 40;
+
+            if (dist < minDist && dist !== 0) {
+                this.x += (ox / dist) * (minDist - dist) * 0.1;
+                this.y += (oy / dist) * (minDist - dist) * 0.1;
+            }
+        }
+
         if (this.x > this.game.width) this.x = -this.width;
     }
 }
