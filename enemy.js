@@ -31,7 +31,9 @@ export class Enemies {
         else {
             if (player.y < this.enemies.y) this.enemies.y -= this.speed;
             else if (player.y > this.enemies.y) this.enemies.y += this.speed; 
-        }            
+        }  
+        
+        // boundary condition for enemies
         if (this.x > this.game.width) this.x = -this.width;
     }
 }

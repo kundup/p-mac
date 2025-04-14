@@ -6,7 +6,8 @@
 // 4 pcs enemy created and they are moving on x direction.
 - map need to be created- // map class created and practiced in the game. okay
 - dots need to place in to the map area. // okay
-- enemie need to follow the player
+- enemies need to follow the player. // okay.
+    . ISSUE : enemies getting too close each other
 - collision detection
 - score optimization
 - health optimization
