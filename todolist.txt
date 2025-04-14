@@ -7,7 +7,7 @@
 - map need to be created- // map class created and practiced in the game. okay
 - dots need to place in to the map area. // okay
 - enemies need to follow the player. // okay.
-    . ISSUE : enemies getting too close each other // done
+    . ISSUE : enemies getting too close each other // done ----one reddot added as a new tech.
 - collision detection
 - score optimization
 - health optimization

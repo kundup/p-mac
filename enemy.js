@@ -33,7 +33,7 @@ export class Enemies {
             const dist = Math.sqrt(ox * ox + oy * oy);
             const minDist = 40;
 
-            if (dist < minDist && dist !== 0) {
+            if (dist < minDist && dist > 0) {
                 this.x += (ox / dist) * (minDist - dist) * 0.1;
                 this.y += (oy / dist) * (minDist - dist) * 0.1;
             }
