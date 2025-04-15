@@ -19,3 +19,10 @@
 - some visual and sound effects
     . dust effects
     . sound effects
+
+
+// new concepts need to apply the code
+    . use object in function parameters (destructuring)
+    . use spread in array or objects
+    . use object.assign
+    .
