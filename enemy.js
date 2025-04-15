@@ -24,7 +24,6 @@ export class Enemies {
         } else {
             this.y += Math.sign(dy) * this.speed;
         }
-
         for (let others of allEnemies) {
             if (others === this) continue;
 
