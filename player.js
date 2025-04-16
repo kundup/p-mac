@@ -3,8 +3,8 @@ import { Idle, DownWalking, UpWalking, LeftWalking } from "./gamestate.js";
 export class Player {
     constructor(game){
         this.game = game;
-        this.x = 100;
-        this.y = 100;
+        this.x = 50;
+        this.y = 50;
         this.width = 30;
         this.height = 30;        
         this.image = document.getElementById("player");        
@@ -48,7 +48,39 @@ export class Player {
         }        
     }
     setState(state){
-        this.currentState = this.inputState[state];
+        this.currentState = this.inputState[state];        
         this.currentState.enter(); 
     }
+
+    checkCollison (){
+        let tile_size = this.game.tile_size;
+
+        let futureRect = {
+            x : this.x + this.speedX,
+            y : this.y + this.speedY,
+            width : this.width,
+            height : this.height
+        }
+
+        for (let i = 0; i < this.game.map.length; i++){
+            for(let j = 0; j < this.game.map[0].length; j++){
+                if (this.game.map[i][j] === 1){
+                    let tileRect = {
+                        x : tile_size * j,
+                        y : tile_size * i,
+                        width : tile_size,
+                        height : tile_size
+                    }
+                    if (this.rectTile(futureRect, tileRect)) {
+                        this.speedX = 0;
+                        this.speedY = 0;
+
+                    }
+                }
+            }
+        }
+    }    
+    rectTile (a, b){
+        return (a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y)
+    }   
 }

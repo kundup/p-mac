@@ -15,11 +15,11 @@ window.addEventListener("load", function(){
             this.height = canvas.height = 600;
             this.tile_size = 30;
             this.row = this.height / this.tile_size;
-            this.col = this.width / this.tile_size; 
-
+            this.col = this.width / this.tile_size;
+            this.map = map;
             this.player = new Player(this); 
             this.input = new Input();
-            this.gameMap = new GameMap(map, this);
+            this.gameMap = new GameMap(this.map, this);
             this.input.handleInput();
             this.enemyList = [];
             this.addEnemy();
@@ -36,7 +36,8 @@ window.addEventListener("load", function(){
             this.player.update(deltatime, this.input.keys);
             this.enemyList.forEach((object) =>{
                 object.updateEnemies(this.player,this.enemyList);
-            })            
+            }) 
+            this.player.checkCollison(this.map)           
         }
         addEnemy(){
             for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
