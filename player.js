@@ -76,9 +76,28 @@ export class Player {
                         height : tile_size
                     }
                     if (this.rectTile(futureRect, tileRect)) {
-                        this.playerSpeed.x = 0;
-                        this.playerSpeed.y = 0;
-
+                        if (
+                            futureRect.x < tileRect.x + tileRect.width &&
+                            futureRect.x + futureRect.width > tileRect.x
+                        ) {
+                            if (this.playerSpeed.x > 0) {                                
+                                this.x = tileRect.x - this.width;
+                            } else if (this.playerSpeed.x < 0) {
+                                this.x = tileRect.x + tileRect.width;
+                            }
+                            this.playerSpeed.x = 0;
+                        }            
+                        if (
+                            futureRect.y < tileRect.y + tileRect.height &&
+                            futureRect.y + futureRect.height > tileRect.y
+                        ) {
+                            if (this.playerSpeed.y > 0) {                
+                                this.y = tileRect.y - this.height;
+                            } else if (this.playerSpeed.y < 0) {
+                                this.y = tileRect.y + tileRect.height;
+                            }
+                            this.playerSpeed.y = 0;
+                        }
                     }
                 }
             }
