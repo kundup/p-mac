@@ -10,8 +10,10 @@ export class Player {
         this.image = document.getElementById("player");        
         this.frameX =4;
         this.frameMax = 5;
-        this.speedX = 0;
-        this.speedY = 0;
+        this.playerSpeed = {
+            x: 0,
+            y : 0
+        }    
         this.speedMax = 3;
         this.fps = 5;
         this.frameInterval = 1000/ this.fps;
@@ -30,8 +32,8 @@ export class Player {
     update(deltatime, input){ 
         this.currentState.handleInput(input);
         // horizontal movement and vertical movement
-        this.x += this.speedX;        
-        this.y += this.speedY 
+        this.x += this.playerSpeed.x;        
+        this.y += this.playerSpeed.y;
         // boundary condition       
         if (this.x >= this.game.width) this.x = 0;
         else if (this.x + this.width < 0) this.x = this.game.width;
@@ -56,8 +58,8 @@ export class Player {
         let tile_size = this.game.tile_size;
 
         let futureRect = {
-            x : this.x + this.speedX,
-            y : this.y + this.speedY,
+            x : this.x + this.playerSpeed.x,
+            y : this.y + this.playerSpeed.y,
             width : this.width,
             height : this.height
         }
@@ -72,8 +74,8 @@ export class Player {
                         height : tile_size
                     }
                     if (this.rectTile(futureRect, tileRect)) {
-                        this.speedX = 0;
-                        this.speedY = 0;
+                        this.playerSpeed.x = 0;
+                        this.playerSpeed.y = 0;
 
                     }
                 }
@@ -81,6 +83,7 @@ export class Player {
         }
     }    
     rectTile (a, b){
-        return (a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y)
+        return (a.x < b.x + b.width && a.x + a.width > b.x &&
+            a.y < b.y + b.height && a.y + a.height > b.y)
     }   
 }

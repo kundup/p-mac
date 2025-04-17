@@ -17,8 +17,8 @@ export class Idle extends Status {
     enter (){
         this.player.frameX = 4;
         this.player.frameMax = 5;
-        this.player.speedX = this.player.speedMax;
-        this.player.speedY = 0;
+        this.player.playerSpeed.x = this.player.speedMax;
+        this.player.playerSpeed.y = 0;
     }
     handleInput(input){
         if (input.includes("ArrowDown")){
@@ -36,8 +36,8 @@ export class DownWalking extends Status {
     enter (){
         this.player.frameX = 0
         this.player.frameMax = 1;
-        this.player.speedY = this.player.speedMax;
-        this.player.speedX = 0;
+        this.player.playerSpeed.y = this.player.speedMax;
+        this.player.playerSpeed.x = 0;
     }
     handleInput(input){
         if (input.includes("ArrowRight")){
@@ -53,8 +53,8 @@ export class UpWalking extends Status {
     enter (){
         this.player.frameX = 6;
         this.player.frameMax = 7;
-        this.player.speedX = 0;
-        this.player.speedY = -1 * this.player.speedMax;
+        this.player.playerSpeed.x = 0;
+        this.player.playerSpeed.y = -1 * this.player.speedMax;
     }
     handleInput(input){
         if (input.includes("ArrowRight")){
@@ -70,8 +70,8 @@ export class LeftWalking extends Status {
     enter (){
         this.player.frameX = 2;
         this.player.frameMax = 3;
-        this.player.speedX = -1 * this.player.speedMax;
-        this.player.speedY = 0;
+        this.player.playerSpeed.x = -1 * this.player.speedMax;
+        this.player.playerSpeed.y = 0;
     }
     handleInput(input){
         if (input.includes("ArrowRight")){
