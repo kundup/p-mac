@@ -8,16 +8,18 @@ export class Player {
         this.width = 30;
         this.height = 30;        
         this.image = document.getElementById("player");        
-        this.frameX =4;
-        this.frameMax = 5;
+        this.frame = {
+            x : 4,
+            max : 5,
+            fps : 5,
+            timer : 0
+        }
+        this.frameInterval = 1000/ this.frame.fps;
         this.playerSpeed = {
             x: 0,
             y : 0
         }    
-        this.speedMax = 3;
-        this.fps = 5;
-        this.frameInterval = 1000/ this.fps;
-        this.frameTimer = 0;        
+        this.speedMax = 3;                
         this.init();                  
     }
     init (){
@@ -27,7 +29,7 @@ export class Player {
     }
 
     draw(contex){
-        contex.drawImage(this.image, this.width * this.frameX, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+        contex.drawImage(this.image, this.width * this.frame.x, 0, this.width, this.height, this.x, this.y, this.width, this.height);
     }
     update(deltatime, input){ 
         this.currentState.handleInput(input);
@@ -41,12 +43,12 @@ export class Player {
         if (this.y >= this.game.height) this.y = 0;
         else if (this.y + this.height <= 0) this.y = this.game.height;    
         // fps settings
-        if (this.frameTimer > this.frameInterval){
-            this.frameTimer = 0;
-            if (this.frameX < this.frameMax)this.frameX ++;
-            else this.frameX = this.frameMax-1;
+        if (this.frame.timer > this.frameInterval){
+            this.frame.timer = 0;
+            if (this.frame.x < this.frame.max)this.frame.x ++;
+            else this.frame.x = this.frame.max -1;
         } else {
-            this.frameTimer += deltatime;
+            this.frame.timer += deltatime;
         }        
     }
     setState(state){

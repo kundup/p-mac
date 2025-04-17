@@ -15,8 +15,8 @@ export class Idle extends Status {
         super(STATE.IDLE, player);                
     }
     enter (){
-        this.player.frameX = 4;
-        this.player.frameMax = 5;
+        this.player.frame.x = 4;
+        this.player.frame.max = 5;
         this.player.playerSpeed.x = this.player.speedMax;
         this.player.playerSpeed.y = 0;
     }
@@ -34,8 +34,8 @@ export class DownWalking extends Status {
         super(STATE.DOWNWALKING, player);       
     }
     enter (){
-        this.player.frameX = 0
-        this.player.frameMax = 1;
+        this.player.frame.x = 0
+        this.player.frame.max = 1;
         this.player.playerSpeed.y = this.player.speedMax;
         this.player.playerSpeed.x = 0;
     }
@@ -51,8 +51,8 @@ export class UpWalking extends Status {
         super(STATE.UPWALKING, player);       
     }
     enter (){
-        this.player.frameX = 6;
-        this.player.frameMax = 7;
+        this.player.frame.x = 6;
+        this.player.frame.max = 7;
         this.player.playerSpeed.x = 0;
         this.player.playerSpeed.y = -1 * this.player.speedMax;
     }
@@ -68,8 +68,8 @@ export class LeftWalking extends Status {
         super(STATE.LEFTWALKING, player);         
     }
     enter (){
-        this.player.frameX = 2;
-        this.player.frameMax = 3;
+        this.player.frame.x = 2;
+        this.player.frame.max = 3;
         this.player.playerSpeed.x = -1 * this.player.speedMax;
         this.player.playerSpeed.y = 0;
     }
