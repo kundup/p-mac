@@ -68,6 +68,7 @@ export class Player {
 
         for (let i = 0; i < this.game.map.length; i++){
             for(let j = 0; j < this.game.map[0].length; j++){
+                // wall- detection algorithm
                 if (this.game.map[i][j] === 1){
                     let tileRect = {
                         x : tile_size * j,
