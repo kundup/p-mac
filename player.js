@@ -49,8 +49,21 @@ export class Player {
             else this.frame.x = this.frame.max -1;
         } else {
             this.frame.timer += deltatime;
-        }        
+        }
+        
+        let tileSize = this.game.tile_size;
+
+        // align on the x axis
+        if (this.playerSpeed.y !== 0) {
+            this.x = Math.round(this.x / tileSize) * tileSize;
+        }
+
+        // align on the y axis
+        if (this.playerSpeed.x !== 0) {
+            this.y = Math.round(this.y / tileSize) * tileSize;
+        }
     }
+    
     setState(state){
         this.currentState = this.inputState[state];        
         this.currentState.enter(); 
@@ -101,6 +114,31 @@ export class Player {
                         }
                     }
                 }
+
+                if (this.game.map[i][j] === 2){
+
+                    let dotRect = {
+                        x : tile_size * j,
+                        y : tile_size * i,
+                        width : tile_size,
+                        height : tile_size
+                    }
+
+                    let playerRect = {
+                        x : this.x,
+                        y : this.y,
+                        width : this.width,
+                        height : this.height
+
+                    }
+
+                    if (this.rectTile(playerRect, dotRect)){
+                        this.game.map[i][j] = 0
+                        this.gameScore += 1;
+                    }
+
+                }
+                
             }
         }
     }    

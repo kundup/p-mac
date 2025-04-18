@@ -37,7 +37,7 @@ window.addEventListener("load", function(){
             this.enemyList.forEach((object) =>{
                 object.updateEnemies(this.player,this.enemyList);
             }) 
-            this.player.checkCollison(this.map)           
+            this.player.checkCollison()           
         }
         addEnemy(){
             for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
