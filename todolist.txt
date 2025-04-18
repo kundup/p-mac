@@ -8,9 +8,10 @@
 - dots need to place in to the map area. // okay
 - enemies need to follow the player. // okay.
     . ISSUE : enemies getting too close each other // done ----one reddot added as a new tech.
-- collision detection
+- collision detection // player~wall, player~dot and eney~player(in progress)
 - score optimization
     . currently performing this by using filter function on array.
+- pause case
 - health optimization
     . restart the game losing an health automatically
 - ui design 
