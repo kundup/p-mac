@@ -8,9 +8,9 @@
 - dots need to place in to the map area. // okay
 - enemies need to follow the player. // okay.
     . ISSUE : enemies getting too close each other // done ----one reddot added as a new tech.
-- collision detection // player~wall, player~dot and eney~player(in progress)
+- collision detection // player~wall (done), player~dot (done) and eney~player(in progress)
 - score optimization
-    . currently performing this by using filter function on array.
+    . currently performing this by using filter function on array. -done
 - pause case
 - health optimization
     . restart the game losing an health automatically
@@ -28,4 +28,5 @@
     . use object in function parameters (destructuring)
     . use spread in array or objects
     . use object.assign
-    .
+
+// issue : too sharp transition as aligning the player into the hallway (no need to rush to solve that).
