@@ -18,6 +18,7 @@
     .scoreboard
     .health board
 - background
+- more optimization
 - some visual and sound effects
     . dust effects
     . sound effects
