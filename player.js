@@ -28,7 +28,6 @@ export class Player {
         this.currentState = this.inputState[0]
         this.currentState.enter();
     }
-
     draw(contex){
         contex.drawImage(this.image, this.width * this.frame.x, 0, this.width, this.height, this.x, this.y, this.width, this.height);
     }
@@ -50,36 +49,29 @@ export class Player {
             else this.frame.x = this.frame.max -1;
         } else {
             this.frame.timer += deltatime;
-        }
-        
+        }        
         let tileSize = this.game.tile_size;
-
         // align on the x axis
         if (this.playerSpeed.y !== 0) {
             this.x = Math.round(this.x / tileSize) * tileSize;
         }
-
         // align on the y axis
         if (this.playerSpeed.x !== 0) {
             this.y = Math.round(this.y / tileSize) * tileSize;
         }
-    }
-    
+    }    
     setState(state){
         this.currentState = this.inputState[state];        
         this.currentState.enter(); 
     }
-
     checkCollison (){
         let tile_size = this.game.tile_size;
-
         const futureRect = {
             x : this.x + this.playerSpeed.x,
             y : this.y + this.playerSpeed.y,
             width : this.width,
             height : this.height
         }
-
         for (let i = 0; i < this.game.map.length; i++){
             for(let j = 0; j < this.game.map[0].length; j++){
                 // wall- detection algorithm
@@ -110,7 +102,6 @@ export class Player {
                         }
                     }
                 }
-
                 if (this.game.map[i][j] === 2){
                     const dot = this.game.generateObj(j, i, this.game.tile_size);
                     const players = this.game.generateObj(this.x / this.game.tile_size, this.y / this.game.tile_size, this.game.tile_size)                  
