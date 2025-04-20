@@ -26,7 +26,8 @@ window.addEventListener("load", function(){
             this.dot = [];
             this.addDotsToList();
             this.addEnemy();
-            this.gamePaused = false
+            this.gamePaused = false;
+            this.gameScore = 0;
                        
         }
         draw(ctx) {

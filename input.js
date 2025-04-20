@@ -8,7 +8,7 @@ export class Input {
                 this.keys.push(e.key);
             
             }
-            if (e.key === "p") game.gamePaused = !game.gamePaused;
+            if (e.key === "p" || e.key === "P") game.gamePaused = !game.gamePaused;
         })
         document.addEventListener("keyup", (e) => {
             if (e.key == "ArrowDown" || e.key === "ArrowUp"|| e.key === "ArrowLeft" || e.key === "ArrowRight"){

@@ -19,8 +19,7 @@ export class Player {
             x: 0,
             y : 0
         }    
-        this.speedMax = 3; 
-        this.gameScore = 0;              
+        this.speedMax = 3;                       
         this.init();                  
     }
     init (){
@@ -109,8 +108,7 @@ export class Player {
                     if (this.rectTile(players, dot)){
                         this.game.map[i][j] = 0;
                         this.game.dot = this.game.dot.filter (d => !(d.x ===dot.x && d.y === dot.y));
-                        this.gameScore += 1; 
-                        console.log(this.gameScore);                        
+                        this.game.gameScore += 1;                        
                     }                    
                 }                
             }
