@@ -73,7 +73,7 @@ export class Player {
     checkCollison (){
         let tile_size = this.game.tile_size;
 
-        let futureRect = {
+        const futureRect = {
             x : this.x + this.playerSpeed.x,
             y : this.y + this.playerSpeed.y,
             width : this.width,
@@ -84,12 +84,7 @@ export class Player {
             for(let j = 0; j < this.game.map[0].length; j++){
                 // wall- detection algorithm
                 if (this.game.map[i][j] === 1){
-                    let tileRect = {
-                        x : tile_size * j,
-                        y : tile_size * i,
-                        width : tile_size,
-                        height : tile_size
-                    }
+                    const tileRect = this.game.generateObj(j, i, this.game.tile_size)
                     if (this.rectTile(futureRect, tileRect)) {
                         if (
                             futureRect.x < tileRect.x + tileRect.width &&
@@ -117,26 +112,14 @@ export class Player {
                 }
 
                 if (this.game.map[i][j] === 2){
+                    const dot = this.game.generateObj(j, i, this.game.tile_size);
+                    const players = this.game.generateObj(this.x / this.game.tile_size, this.y / this.game.tile_size, this.game.tile_size)                  
 
-                    const dot = {
-                        x : j * tile_size,
-                        y : i * tile_size,
-                        width : tile_size,
-                        height : tile_size
-                    }
-
-                    const player = {
-                        x : this.x,
-                        y : this.y,
-                        width : this.width,
-                        height : this.height
-                    }
-                    if (this.rectTile(player, dot)){
+                    if (this.rectTile(players, dot)){
                         this.game.map[i][j] = 0;
                         this.game.dot = this.game.dot.filter (d => !(d.x ===dot.x && d.y === dot.y));
                         this.gameScore += 1; 
-                        console.log(this.gameScore)
-                        
+                        console.log(this.gameScore);                        
                     }                    
                 }                
             }
@@ -145,7 +128,5 @@ export class Player {
     rectTile (a, b){
         return (a.x < b.x + b.width && a.x + a.width > b.x &&
             a.y < b.y + b.height && a.y + a.height > b.y)
-    }
-    
-    
+    }    
 }

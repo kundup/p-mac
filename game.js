@@ -53,16 +53,19 @@ window.addEventListener("load", function(){
             for(let i =0; i < this.row; i++){
                 for (let j = 0; j < this.col; j++){
                     if (this.map[i][j] === 2){
-                        const dotobj = {
-                            x : j * this.tile_size,
-                            y : i * this.tile_size,
-                            width : this.tile_size,
-                            height : this.tile_size
-                        }
-    
+                        const dotobj = this.generateObj(j, i, this.tile_size)   
                         this.dot.push(dotobj);
                     }
                 }
+            }
+        }
+
+        generateObj(a,b, tile_size){
+            return {
+                x : a * tile_size,
+                y : b * tile_size,
+                width : tile_size,
+                height : tile_size
             }
         }
     }
