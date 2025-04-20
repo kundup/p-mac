@@ -7,6 +7,7 @@ export class Enemies {
         this.width = 30;
         this.height = 30;
         this.image = document.getElementById("enemy");
+        this.frozenEnemy = document.getElementById("blueGhost")
         this.frameX = 0;
         this.frameY = 0;
         this.speed = Math.random() * 2;
