@@ -21,11 +21,12 @@ window.addEventListener("load", function(){
             this.input = new Input();
             this.gameMap = new GameMap(this.map, this);
             this.dotImage = document.getElementById("dot");
-            this.input.handleInput();
+            this.input.handleInput(this);
             this.enemyList = [];
             this.dot = [];
             this.addDotsToList();
             this.addEnemy();
+            this.gamePaused = false
                        
         }
         draw(ctx) {
@@ -38,7 +39,9 @@ window.addEventListener("load", function(){
                 object.drawEnemies(ctx);                
             });
         }        
-        update(deltatime){            
+        update(deltatime){
+            if (this.gamePaused) return;
+                        
             this.player.update(deltatime, this.input.keys);
             this.enemyList.forEach((object) =>{
                 object.updateEnemies(this.player,this.enemyList);
@@ -48,7 +51,6 @@ window.addEventListener("load", function(){
         addEnemy(){
             for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
         }
-
         addDotsToList (){
             for(let i =0; i < this.row; i++){
                 for (let j = 0; j < this.col; j++){
@@ -59,7 +61,6 @@ window.addEventListener("load", function(){
                 }
             }
         }
-
         generateObj(a,b, tile_size){
             return {
                 x : a * tile_size,

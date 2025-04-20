@@ -26,8 +26,7 @@ export class GameMap {
         this.map = map;
         this.game = game;
         this.player= this.game.player
-        this.wall = document.getElementById("wall"); 
-            
+        this.wall = document.getElementById("wall");             
     }
     drawMap(ctx){
         for (let i = 0; i < this.game.row; i++){
@@ -36,7 +35,6 @@ export class GameMap {
                     ctx.drawImage(this.wall, this.game.tile_size * j, this.game.tile_size * i, this.game.tile_size, this.game.tile_size);                            
                 }                
             }
-        }           
-
+        } 
     }
 }
