@@ -14,7 +14,7 @@ export class Enemies {
         this.flickduration = 3000;
         this.visible = true;
         this.visibleinterval = 100;
-
+        // time keepers
         this.flickertimer = 0;
         this.visibletimer = 0;
     }
@@ -37,8 +37,7 @@ export class Enemies {
                 this.flickmode = false;
                 this.visible = true;
             };
-        }
-                
+        }                
         else {  
             const dx = player.x - this.x;
             const dy = player.y - this.y;
@@ -70,8 +69,7 @@ export class Enemies {
 
     checkCollisionEnemy(){
         const buffer = 5;
-        if (this.x + this.width - buffer > this.player.x && this.x + buffer < this.player.x + this.player.width && 
-            this.y + this.height - buffer > this.player.y && this.y + buffer < this.player.y + this.player.height
+        if (this.game.rectTile(this, this.player, 5)
         ){    
             this.flickmode = true;
             this.visible = false;

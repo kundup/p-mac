@@ -71,6 +71,11 @@ window.addEventListener("load", function(){
                 height : tile_size
             }
         }
+
+        rectTile (a, b, buffer){
+            return (a.x + buffer< b.x + b.width && a.x + a.width - buffer > b.x &&
+                a.y + buffer < b.y + b.height && a.y + a.height - buffer > b.y)
+        } 
     }
     const game = new Game();
 

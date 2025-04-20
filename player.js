@@ -76,7 +76,7 @@ export class Player {
                 // wall- detection algorithm
                 if (this.game.map[i][j] === 1){
                     const tileRect = this.game.generateObj(j, i, this.game.tile_size)
-                    if (this.rectTile(futureRect, tileRect)) {
+                    if (this.game.rectTile(futureRect, tileRect, 0)) {
                         if (
                             futureRect.x < tileRect.x + tileRect.width &&
                             futureRect.x + futureRect.width > tileRect.x
@@ -105,7 +105,7 @@ export class Player {
                     const dot = this.game.generateObj(j, i, this.game.tile_size);
                     const players = this.game.generateObj(this.x / this.game.tile_size, this.y / this.game.tile_size, this.game.tile_size)                  
 
-                    if (this.rectTile(players, dot)){
+                    if (this.game.rectTile(players, dot, 15)){
                         this.game.map[i][j] = 0;
                         this.game.dot = this.game.dot.filter (d => !(d.x ===dot.x && d.y === dot.y));
                         this.game.gameScore += 1;                        
@@ -114,8 +114,5 @@ export class Player {
             }
         }
     }    
-    rectTile (a, b){
-        return (a.x < b.x + b.width && a.x + a.width > b.x &&
-            a.y < b.y + b.height && a.y + a.height > b.y)
-    }    
+       
 }
