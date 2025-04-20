@@ -29,9 +29,7 @@ window.addEventListener("load", function(){
             this.gamePaused = false;
             this.gameScore = 0;
             this.health = 2;
-            this.gameOver = false;
-
-                       
+            this.gameOver = false;                       
         }
         draw(ctx) {
             this.gameMap.drawMap(ctx);

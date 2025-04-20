@@ -11,27 +11,27 @@ export class Enemies {
         this.frameY = 0;
         this.speed = Math.random() * 2;
         this.flickmode = false;
-        this.flickduration = 5000;
+        this.flickduration = 3000;
         this.visible = true;
-        this.visibleinterval = 150;
+        this.visibleinterval = 100;
 
         this.flickertimer = 0;
         this.visibletimer = 0;
     }
 
     drawEnemies(ctx){
-        if (this.visible){
+        if (this.visible){ // now flickering with this control
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
         };
     }
 
     updateEnemies(player, allEnemies){ 
-        const now = performance.now();     
+        const now = performance.now();  // each updating takes a time here   
         if (this.flickmode) {        
             if (now - this.flickertimer < this.flickduration){            
                 if (now - this.visibletimer > this.visibleinterval ){
                     this.visible = !this.visible;
-                    this.visibletimer = now;
+                    this.visibletimer = now; // here we need a time comparing visibleinterval
                 }
             }else {
                 this.flickmode = false;
@@ -63,12 +63,10 @@ export class Enemies {
                 }
             }
             // collision detection enemy ~ player
-            this.checkCollisionEnemy();
-        }      
-        
-        if (this.x > this.game.width) this.x = -this.width;        
-    }
-    
+            this.checkCollisionEnemy(); // here collision only checks after flicker mode turned off.
+        }        
+        if (this.x > this.game.width) this.x = -this.width;   // independent line from the flicker mode.     
+    }  
 
     checkCollisionEnemy(){
         const buffer = 5;
@@ -77,7 +75,7 @@ export class Enemies {
         ){    
             this.flickmode = true;
             this.visible = false;
-            this.flickertimer = performance.now();
+            this.flickertimer = performance.now();// when enemy collides with player saved the time.
             this.visibletimer = performance.now();
         } 
     }    
