@@ -20,13 +20,19 @@ window.addEventListener("load", function(){
             this.player = new Player(this); 
             this.input = new Input();
             this.gameMap = new GameMap(this.map, this);
+            this.dotImage = document.getElementById("dot");
             this.input.handleInput();
             this.enemyList = [];
+            this.dot = [];
+            this.addDotsToList();
             this.addEnemy();
                        
         }
         draw(ctx) {
             this.gameMap.drawMap(ctx);
+            this.dot.forEach(obj => {
+                ctx.drawImage(this.dotImage, obj.x, obj.y, obj.width, obj.height);
+            })
             this.player.draw(ctx);
             this.enemyList.forEach((object) => {
                 object.drawEnemies(ctx);                
@@ -41,6 +47,23 @@ window.addEventListener("load", function(){
         }
         addEnemy(){
             for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
+        }
+
+        addDotsToList (){
+            for(let i =0; i < this.row; i++){
+                for (let j = 0; j < this.col; j++){
+                    if (this.map[i][j] === 2){
+                        const dotobj = {
+                            x : j * this.tile_size,
+                            y : i * this.tile_size,
+                            width : this.tile_size,
+                            height : this.tile_size
+                        }
+    
+                        this.dot.push(dotobj);
+                    }
+                }
+            }
         }
     }
     const game = new Game();

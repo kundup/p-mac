@@ -19,13 +19,11 @@ export class Player {
             x: 0,
             y : 0
         }    
-        this.speedMax = 3;
-        this.dot = []; 
+        this.speedMax = 3; 
         this.gameScore = 0;              
         this.init();                  
     }
     init (){
-        this.addDotsToList()
         this.inputState = [new Idle(this), new DownWalking(this), new UpWalking(this), new LeftWalking(this)];
         this.currentState = this.inputState[0]
         this.currentState.enter();
@@ -135,7 +133,7 @@ export class Player {
                     }
                     if (this.rectTile(player, dot)){
                         this.game.map[i][j] = 0;
-                        this.dot = this.dot.filter (d => !(d.x ===dot.x && d.y === dot.y));
+                        this.game.dot = this.game.dot.filter (d => !(d.x ===dot.x && d.y === dot.y));
                         this.gameScore += 1; 
                         console.log(this.gameScore)
                         
@@ -149,20 +147,5 @@ export class Player {
             a.y < b.y + b.height && a.y + a.height > b.y)
     }
     
-    addDotsToList (){
-        for(let i =0; i < this.game.row; i++){
-            for (let j = 0; j < this.game.col; j++){
-                if (this.game.map[i][j] === 2){
-                    const dot = {
-                        x : j * this.game.tile_size,
-                        y : i * this.game.tile_size,
-                        width : this.game.tile_size,
-                        height : this.game.tile_size
-                    }
-
-                    this.dot.push(dot);
-                }
-            }
-        }
-    }
+    
 }
