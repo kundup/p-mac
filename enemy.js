@@ -10,48 +10,75 @@ export class Enemies {
         this.frameX = 0;
         this.frameY = 0;
         this.speed = Math.random() * 2;
+        this.flickmode = false;
+        this.flickduration = 5000;
+        this.visible = true;
+        this.visibleinterval = 150;
+
+        this.flickertimer = 0;
+        this.visibletimer = 0;
     }
 
     drawEnemies(ctx){
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if (this.visible){
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+        };
     }
 
-    updateEnemies(player, allEnemies){
-        const dx = player.x - this.x;
-        const dy = player.y - this.y;
-
-        if (Math.abs(dx) > Math.abs(dy)){
-            this.x += Math.sign(dx) * this.speed;
-        } else {
-            this.y += Math.sign(dy) * this.speed;
+    updateEnemies(player, allEnemies){ 
+        const now = performance.now();     
+        if (this.flickmode) {        
+            if (now - this.flickertimer < this.flickduration){            
+                if (now - this.visibletimer > this.visibleinterval ){
+                    this.visible = !this.visible;
+                    this.visibletimer = now;
+                }
+            }else {
+                this.flickmode = false;
+                this.visible = true;
+            };
         }
-        for (let others of allEnemies) {
-            if (others === this) continue;
+                
+        else {  
+            const dx = player.x - this.x;
+            const dy = player.y - this.y;
 
-            const ox = this.x - others.x;
-            const oy = this.y - others.y;
-            const dist = Math.sqrt(ox * ox + oy * oy);
-            const minDist = 40;
-
-            if (dist < minDist && dist > 0) {
-                this.x += (ox / dist) * (minDist - dist) * 0.1;
-                this.y += (oy / dist) * (minDist - dist) * 0.1;
+            if (Math.abs(dx) > Math.abs(dy)){
+                this.x += Math.sign(dx) * this.speed;
+            } else {
+                this.y += Math.sign(dy) * this.speed;
             }
-        }
-        if (this.x > this.game.width) this.x = -this.width;
-        if (this.checkCollisionEnemy()) {
-            this.game.health --;
-            if (this.game.health <= 0){
-                this.game.gameOver = true;
+            for (let others of allEnemies) {
+                if (others === this) continue;
+
+                const ox = this.x - others.x;
+                const oy = this.y - others.y;
+                const dist = Math.sqrt(ox * ox + oy * oy);
+                const minDist = 40;
+
+                if (dist < minDist && dist > 0) {
+                    this.x += (ox / dist) * (minDist - dist) * 0.1;
+                   this.y += (oy / dist) * (minDist - dist) * 0.1;
+
+                }
             }
-        }
+            // collision detection enemy ~ player
+            this.checkCollisionEnemy();
+        }      
+        
+        if (this.x > this.game.width) this.x = -this.width;        
     }
+    
 
     checkCollisionEnemy(){
         const buffer = 5;
-        return (this.x + this.width - buffer > this.player.x && this.x + buffer < this.player.x + this.player.width && 
+        if (this.x + this.width - buffer > this.player.x && this.x + buffer < this.player.x + this.player.width && 
             this.y + this.height - buffer > this.player.y && this.y + buffer < this.player.y + this.player.height
-        )
-
-    }
+        ){    
+            this.flickmode = true;
+            this.visible = false;
+            this.flickertimer = performance.now();
+            this.visibletimer = performance.now();
+        } 
+    }    
 }

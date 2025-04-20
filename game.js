@@ -28,7 +28,7 @@ window.addEventListener("load", function(){
             this.addEnemy();
             this.gamePaused = false;
             this.gameScore = 0;
-            this.health = 3;
+            this.health = 2;
             this.gameOver = false;
 
                        
