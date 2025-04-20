@@ -21,6 +21,6 @@ body {
     box-sizing: border-box; 
   }
 
-  #player, #enemy, #wall, #dot{
+  #player, #enemy, #wall, #dot, #scaredGhost, #scaredGhost2{
     display : none
   }

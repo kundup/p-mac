@@ -7,7 +7,7 @@ export class Enemies {
         this.width = 30;
         this.height = 30;
         this.image = document.getElementById("enemy");
-        this.frozenEnemy = document.getElementById("blueGhost")
+        this.scaredGhost = document.getElementById("scaredGhost2")
         this.frameX = 0;
         this.frameY = 0;
         this.speed = Math.random() * 2;
@@ -21,9 +21,15 @@ export class Enemies {
     }
 
     drawEnemies(ctx){
-        if (this.visible){ // now flickering with this control
+        if (this.flickmode){ // now flickering with this control
+            if (this.visible === true){
+                ctx.drawImage(this.scaredGhost, this.x, this.y, this.width, this.height)
+            }
+            else return
+        }
+        else {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
-        };
+        }
     }
 
     updateEnemies(player, allEnemies){ 
