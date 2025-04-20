@@ -39,12 +39,15 @@ export class Enemies {
             }
         }
         if (this.x > this.game.width) this.x = -this.width;
-        if (this.checkCollisionError()) {
-            this.game.gameOver = true;
+        if (this.checkCollisionEnemy()) {
+            this.game.health --;
+            if (this.game.health <= 0){
+                this.game.gameOver = true;
+            }
         }
     }
 
-    checkCollisionError(){
+    checkCollisionEnemy(){
         const buffer = 5;
         return (this.x + this.width - buffer > this.player.x && this.x + buffer < this.player.x + this.player.width && 
             this.y + this.height - buffer > this.player.y && this.y + buffer < this.player.y + this.player.height
