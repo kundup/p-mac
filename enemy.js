@@ -1,6 +1,7 @@
 export class Enemies {
     constructor(game){
         this.game = game;
+        this.player = this.game.player
         this.x = Math.random() * 200 + this.game.player.x;
         this.y = Math.random() * 200 + this.game.player.y;
         this.width = 30;
@@ -37,7 +38,17 @@ export class Enemies {
                 this.y += (oy / dist) * (minDist - dist) * 0.1;
             }
         }
-
         if (this.x > this.game.width) this.x = -this.width;
+        if (this.checkCollisionError()) {
+            this.game.gameOver = true;
+        }
+    }
+
+    checkCollisionError(){
+        const buffer = 5;
+        return (this.x + this.width - buffer > this.player.x && this.x + buffer < this.player.x + this.player.width && 
+            this.y + this.height - buffer > this.player.y && this.y + buffer < this.player.y + this.player.height
+        )
+
     }
 }

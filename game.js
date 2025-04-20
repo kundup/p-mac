@@ -28,6 +28,7 @@ window.addEventListener("load", function(){
             this.addEnemy();
             this.gamePaused = false;
             this.gameScore = 0;
+            this.gameOver = false;
                        
         }
         draw(ctx) {
@@ -80,7 +81,7 @@ window.addEventListener("load", function(){
         lastTime = timeStamp;
         game.draw(context);
         game.update(deltaTime);
-        requestAnimationFrame(animate);
+        if (!game.gameOver) requestAnimationFrame(animate);
     }
 
     animate(0);
