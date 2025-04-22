@@ -27,8 +27,7 @@ window.addEventListener("load", function(){
             this.addDotsToList();
             this.addEnemy();
             this.gamePaused = false;
-            this.gameScore = 0;
-            this.health = 2;
+            this.gameScore = 0;            
             this.gameOver = false;                       
         }
         draw(ctx) {

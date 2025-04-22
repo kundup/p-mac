@@ -18,6 +18,7 @@ export class Enemies {
         // time keepers
         this.flickertimer = 0;
         this.visibletimer = 0;
+        this.damageable = true;
     }
 
     drawEnemies(ctx){
@@ -38,11 +39,13 @@ export class Enemies {
             if (now - this.flickertimer < this.flickduration){            
                 if (now - this.visibletimer > this.visibleinterval ){
                     this.visible = !this.visible;
-                    this.visibletimer = now; // here we need a time comparing visibleinterval
+                    this.visibletimer = now; // here we need a time comparing visibleinterval                   
+                    
                 }
             }else {
                 this.flickmode = false;
                 this.visible = true;
+                this.damageable = true;
             };
         }                
         else {  
@@ -76,12 +79,15 @@ export class Enemies {
 
     checkCollisionEnemy(){
         const buffer = 5;
-        if (this.game.rectTile(this, this.player, 5)
+        if (this.damageable && this.game.rectTile(this, this.player, 5)
         ){    
             this.flickmode = true;
             this.visible = false;
             this.flickertimer = performance.now();// when enemy collides with player saved the time.
             this.visibletimer = performance.now();
+            this.damageable = false;
+            this.player.health --;
+            if (this.player.health <= 0) this.game.gameOver = true
         } 
     }    
 }

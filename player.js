@@ -19,7 +19,8 @@ export class Player {
             x: 0,
             y : 0
         }    
-        this.speedMax = 3;                       
+        this.speedMax = 3;
+        this.health = 3;                       
         this.init();                  
     }
     init (){
