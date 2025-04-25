@@ -20,6 +20,7 @@
 - background
 - more optimization
 - some visual and sound effects
+    . game Over screen Created - // done
     . dust effects
     . sound effects
 
