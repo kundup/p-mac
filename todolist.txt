@@ -21,7 +21,7 @@
 - background
 - more optimization
 - some visual and sound effects
-    . game Over screen Created - // done
+    . game Over screen Created and optimized with restart function - // done
     . dust effects
     . sound effects
 
