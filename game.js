@@ -74,11 +74,8 @@ window.addEventListener("load", function(){
         rectTile (a, b, buffer){
             return (a.x + buffer< b.x + b.width && a.x + a.width - buffer > b.x &&
                 a.y + buffer < b.y + b.height && a.y + a.height - buffer > b.y)
-        }
+        }        
         
-        graphs (){
-            
-        }
     }
     const game = new Game();
 
