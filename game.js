@@ -2,6 +2,7 @@ import { GameMap, map } from "./map.js";
 import { Player } from "./player.js";
 import { Input } from "./input.js"
 import { Enemies } from "./enemy.js";
+import { Graphs } from "./UI.js";
 
 window.addEventListener("load", function(){
     const canvas = document.getElementById("canvas");
@@ -20,6 +21,7 @@ window.addEventListener("load", function(){
             this.player = new Player(this); 
             this.input = new Input();
             this.gameMap = new GameMap(this.map, this);
+            this.graphs = new Graphs(this);
             this.dotImage = document.getElementById("dot");
             this.input.handleInput(this);
             this.enemyList = [];
@@ -81,13 +83,17 @@ window.addEventListener("load", function(){
 
     let lastTime = 0;
     function animate(timeStamp){
-        context.clearRect(0,0,game.width,game.height);
-        const deltaTime = timeStamp - lastTime;
-        lastTime = timeStamp;
-        game.draw(context);
-        game.update(deltaTime);
-        if (!game.gameOver) requestAnimationFrame(animate);
+        if (!game.gameOver){
+            context.clearRect(0,0,game.width,game.height);
+            const deltaTime = timeStamp - lastTime;
+            lastTime = timeStamp;
+            game.draw(context);
+            game.update(deltaTime);
+            requestAnimationFrame(animate);
+        }
+        else {
+            game.graphs.drawGameOver(context);
+        }                
     }
-
     animate(0);
 })
