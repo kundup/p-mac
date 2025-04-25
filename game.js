@@ -17,20 +17,9 @@ window.addEventListener("load", function(){
             this.tile_size = 30;
             this.row = this.height / this.tile_size;
             this.col = this.width / this.tile_size;
-            this.map = map;
-            this.player = new Player(this); 
-            this.input = new Input();
-            this.gameMap = new GameMap(this.map, this);
-            this.graphs = new Graphs(this);
             this.dotImage = document.getElementById("dot");
-            this.input.handleInput(this);
-            this.enemyList = [];
-            this.dot = [];
-            this.addDotsToList();
-            this.addEnemy();
-            this.gamePaused = false;
-            this.gameScore = 0;            
-            this.gameOver = false;                       
+            this.restart()
+                                   
         }
         draw(ctx) {
             this.gameMap.drawMap(ctx);
@@ -76,7 +65,24 @@ window.addEventListener("load", function(){
         rectTile (a, b, buffer){
             return (a.x + buffer< b.x + b.width && a.x + a.width - buffer > b.x &&
                 a.y + buffer < b.y + b.height && a.y + a.height - buffer > b.y)
-        }        
+        }
+        
+        restart (){
+            this.gameOver = false;
+            this.map = map;
+            this.player = new Player(this); 
+            this.input = new Input();
+            this.gameMap = new GameMap(this.map, this);
+            this.graphs = new Graphs(this);            
+            this.input.handleInput(this);
+            this.enemyList = [];
+            this.dot = [];
+            this.addDotsToList();
+            this.addEnemy();
+            this.gamePaused = false;
+            this.gameScore = 0;            
+            
+        }
         
     }
     const game = new Game();
@@ -92,8 +98,18 @@ window.addEventListener("load", function(){
             requestAnimationFrame(animate);
         }
         else {
-            game.graphs.drawGameOver(context);
+            game.graphs.drawGameOver(context);            
         }                
     }
     animate(0);
+
+    window.addEventListener("keydown", function (e) {
+        if ((e.key === "r" || e.key === "R") && game.gameOver) {
+            game.restart();
+            lastTime = 0;
+            animate(0);
+        }
+    });
 })
+
+

@@ -13,7 +13,8 @@
     . currently performing this by using filter function on array. -done
 - pause case - //done
 - health optimization
-    . restart the game losing an health automatically (flickering enemies as touching the player)
+    . flickering enemies as touching the player // done.
+    . health image optimezed with touching enemies and game over.
 - ui design (now doing that by using css)
     .scoreboard
     .health board

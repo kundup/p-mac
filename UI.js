@@ -15,6 +15,10 @@ export class Graphs {
 
         ctx.font = "20px sans-serif";
         ctx.fillText("Press R to Restart", this.game.width / 2, this.game.height / 2 + 30);
-    }       
+    }
+    
+    drawHeartImage(ctx){
+        
+    }
     
 }
