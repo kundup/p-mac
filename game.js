@@ -18,6 +18,8 @@ window.addEventListener("load", function(){
             this.row = this.height / this.tile_size;
             this.col = this.width / this.tile_size;
             this.dotImage = document.getElementById("dot");
+            this.input = new Input();
+            this.graphs = new Graphs(this);
             this.restart()
                                    
         }
@@ -70,11 +72,8 @@ window.addEventListener("load", function(){
         restart (){
             this.gameOver = false;
             this.map = map;
-            this.player = new Player(this); 
-            this.input = new Input();
-            this.gameMap = new GameMap(this.map, this);
-            this.graphs = new Graphs(this);            
-            this.input.handleInput(this);
+            this.player = new Player(this);             
+            this.gameMap = new GameMap(this.map, this);                         
             this.enemyList = [];
             this.dot = [];
             this.addDotsToList();
@@ -86,6 +85,7 @@ window.addEventListener("load", function(){
         
     }
     const game = new Game();
+    game.input.handleInput(game);
 
     let lastTime = 0;
     function animate(timeStamp){
