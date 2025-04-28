@@ -100,7 +100,6 @@ window.addEventListener("load", function(){
         }                
     }
     animate(0);
-
     window.addEventListener("keydown", function (e) {
         if ((e.key === "r" || e.key === "R") && game.gameOver) {
             game.restart();
