@@ -79,10 +79,8 @@ window.addEventListener("load", function(){
             this.addDotsToList();
             this.addEnemy();
             this.gamePaused = false;
-            this.gameScore = 0;            
-            
-        }
-        
+            this.gameScore = 0;           
+        }        
     }
     const game = new Game();
     game.input.handleInput(game);

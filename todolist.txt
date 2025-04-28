@@ -27,6 +27,7 @@
 
 
 // new concepts need to apply the code
+    . GAME MANAGERS ARE TO ADAPTED TO THE CODE
     . use object in function parameters (destructuring)
     . use spread in array or objects
     . use object.assign
