@@ -1,7 +1,8 @@
 export class Enemies {
-    constructor(game){
+    constructor(game, config){
         this.game = game;
-        this.player = this.game.player
+        this.config = config;
+        this.player = this.game.player;
         this.x = Math.random() * 200 + this.game.player.x;
         this.y = Math.random() * 200 + this.game.player.y;
         this.width = 30;

@@ -3,6 +3,7 @@ import { Player } from "./player.js";
 import { Input } from "./input.js"
 import { Enemies } from "./enemy.js";
 import { Graphs } from "./UI.js";
+import { EnemyManager } from "./managers/enemymanager.js"
 
 window.addEventListener("load", function(){
     const canvas = document.getElementById("canvas");
@@ -20,6 +21,7 @@ window.addEventListener("load", function(){
             this.dotImage = document.getElementById("dot");
             this.input = new Input();
             this.graphs = new Graphs(this);
+            this.enemyManager = new EnemyManager(this);
             this.restart()
                                    
         }
@@ -29,22 +31,17 @@ window.addEventListener("load", function(){
                 ctx.drawImage(this.dotImage, obj.x, obj.y, obj.width, obj.height);
             })
             this.player.draw(ctx);
-            this.enemyList.forEach((object) => {
-                object.drawEnemies(ctx);                
-            });
+            this.enemyManager.drawAllEnemy(ctx)                   
+    
         }        
         update(deltatime){
             if (this.gamePaused) return;
                         
             this.player.update(deltatime, this.input.keys);
-            this.enemyList.forEach((object) =>{
-                object.updateEnemies(this.player,this.enemyList);
-            }) 
+            this.enemyManager.updateAllEnemy()
             this.player.checkCollison()           
         }
-        addEnemy(){
-            for (let i = 0; i < 5; i++) this.enemyList.push(new Enemies(this));            
-        }
+       
         addDotsToList (){
             for(let i =0; i < this.row; i++){
                 for (let j = 0; j < this.col; j++){
@@ -70,14 +67,14 @@ window.addEventListener("load", function(){
         }
         
         restart (){
+            this.enemyManager.resetAllEnemy();
             this.gameOver = false;
-            this.map = map;
+            this.map = map.map(row => [...row])
             this.player = new Player(this);             
-            this.gameMap = new GameMap(this.map, this);                         
-            this.enemyList = [];
+            this.gameMap = new GameMap(this.map, this);                 
             this.dot = [];
             this.addDotsToList();
-            this.addEnemy();
+            this.enemyManager.spawnEnemy(5);
             this.gamePaused = false;
             this.gameScore = 0;           
         }        
