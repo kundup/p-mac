@@ -1,7 +1,6 @@
 import { GameMap, map } from "./map.js";
 import { Player } from "./player.js";
 import { Input } from "./input.js"
-import { Enemies } from "./enemy.js";
 import { Graphs } from "./UI.js";
 import { EnemyManager } from "./managers/enemymanager.js"
 
